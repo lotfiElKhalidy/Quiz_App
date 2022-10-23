@@ -1,0 +1,112 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+    font-family: "Rimouski", 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+/* A clever way to use CSS variables to change a background color */
+:root  {
+    --hue-neutral: 200;
+    --hue-wrong: 0;
+    --hue-right: 145;
+}
+
+/* Center a  box*/
+body {
+    --hue: var(--hue-neutral);
+    padding: 0;
+    margin: 0;
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    background-color: hsl(var(--hue), 100%, 50%);
+}
+
+body.right  {
+    --hue: var(--hue-right);
+}
+
+body.wrong  {
+    --hue: var(--hue-wrong);
+}
+
+.container {
+    width: 800px;
+    max-width: 80%; /* We added this so that our container doesn't overflow our page */
+    background-color: azure;
+    border-radius: 20px;
+    padding: 10px;
+    box-shadow: 0 0 5px 1px;
+}
+
+.title h1 {
+    margin: 10px;
+}
+
+h1 {
+    font-size: 2rem;
+    background: linear-gradient(to right, #fff 20%, #65C7F7 40%, #0052D4 60%,
+                                #fff 80%);
+    background-size: 200% auto;
+    color: #000;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    animation: animate 2s linear infinite;
+}
+
+@keyframes animate  {
+    to  {
+        background-position: 200% center;
+    }
+}
+
+.btn-grid {
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    gap: 10px;
+    margin: 20px 0;
+}
+
+.btn {
+    --hue: var(--hue-neutral);
+    border: 1.5px solid hsl(var(--hue), 100%, 30%);
+    background-color: hsl(var(--hue), 100%, 40%);
+    border-radius: 10px;
+    padding: 5px 10px;
+    color: white;
+    outline: none;
+}
+
+.btn:hover {
+    border-color: black;
+    color: black;
+}
+
+.btn.right {
+    --hue: var(--hue-right);
+    color: black;
+}
+
+
+.btn.wrong {
+    --hue: var(--hue-wrong);
+}
+
+
+.start-btn, .next-btn {
+    font-size: 1.5rem;
+    font-weight: bold;
+    padding: 10px, 20px;
+}
+
+.controls {
+    display: flex;
+    justify-content: center;
+    align-items: cneter;
+}
+
+.hide {
+    display: none;
+}
